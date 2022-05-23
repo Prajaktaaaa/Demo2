@@ -1,5 +1,7 @@
 package Base;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,18 +24,16 @@ public class TestBase {
 //		driver.get(prop.getProperty("url")) ;
 //		driver.get(Utility.Util.readExcel(0, 0));
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+	
+	
 	public void initialization()
 	{
 		System.setProperty("webdriver.chrome.driver","chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.get("https://www.facebook.com");
-		
-		
-		
 	}
-	
-	
-	
 }
